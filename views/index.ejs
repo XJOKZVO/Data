@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"> <!-- Set language to Arabic and text direction to RTL -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl; /* Right-to-left layout */
+            text-align: right; /* Align text to the right */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: right; /* Align table content to the right */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .delete-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <h1>قائمة البيانات</h1>
+    <button onclick="downloadTableAsWord()">تحميل كملف وورد</button>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>الاسم</th>
+                <th>الهاتف</th>
+                <th>الكلية</th>
+                <th>الفرقة</th>
+                <th>حذف</th> <!-- New column for delete button -->
+            </tr>
+        </thead>
+        <tbody>
+            <% posts.forEach(post => { %>
+                <tr>
+                    <td><%= post.name %></td>
+                    <td><%= post.phone %></td>
+                    <td><%= post.college %></td>
+                    <td><%= post.year %></td>
+                    <td>
+                        <!-- Delete button linking to the delete route -->
+                        <form action="/posts/<%= post.id %>/delete" method="POST">
+                            <button type="submit" class="delete-btn">حذف</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <script>
+        function downloadTableAsWord() {
+            const table = document.getElementById('data-table');
+            let html = table.outerHTML;
+            let blob = new Blob([html], {
+                type: 'application/msword'
+            });
+            let url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

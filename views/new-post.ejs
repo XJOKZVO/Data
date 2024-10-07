@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل البيانات</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            direction: rtl; /* Change text direction to right-to-left */
+        }
+        .welcome-message {
+            background-color: #28a745; /* Green background */
+            color: white; /* White text color */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            margin-bottom: 20px; /* Space below the message */
+            text-align: center; /* Center the text */
+            font-size: 18px; /* Font size */
+            width: 100%; /* Full width */
+            max-width: 400px; /* Max width */
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center; /* Center align text in the form */
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            text-align: center; /* Center label text */
+            color: #555; /* Slightly lighter color for labels */
+        }
+        input[type="text"] {
+            width: 90%; /* Adjust width for centering */
+            padding: 10px;
+            margin: 0 auto 15px auto; /* Center input and add bottom margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            display: block; /* Make input a block element to center */
+            transition: border-color 0.3s; /* Transition effect for border */
+        }
+        input[type="text"]:focus {
+            border-color: #28a745; /* Change border color on focus */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Add shadow on focus */
+        }
+        button {
+            width: 90%; /* Adjust width for centering */
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 auto; /* Center button */
+            display: block; /* Make button a block element to center */
+            transition: background-color 0.3s; /* Transition effect for button */
+        }
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: scale(1.05); /* Slightly enlarge button on hover */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            form {
+                padding: 15px;
+            }
+            button {
+                font-size: 14px;
+            }
+            input[type="text"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script>
+        // Function to handle form submission and show "تم التسجيل"
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Display registration success message
+            alert("تم التسجيل بنجاح");
+
+            // Optionally, you can submit the form after showing the message
+            event.target.submit(); // Submit the form programmatically
+        }
+    </script>
+</head>
+<body>
+    <form action="/posts" method="POST" onsubmit="handleSubmit(event)">
+        <div class="welcome-message">مرحبًا بك في نظام تسجيل البيانات!</div>
+        <img src="308963231_471327758370598_1275137817448226925_n.jpg" alt="تسجيل البيانات" style="width: 100%; max-width: 200px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        
+        <h1>تسجيل البيانات</h1>
+        
+        <label for="name">الاسم:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">رقم التليفون:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="college">الكلية:</label>
+        <input type="text" id="college" name="college" required>
+
+        <label for="year">الفرقة:</label>
+        <input type="text" id="year" name="year" required>
+
+        <button type="submit">تسجيل</button>
+    </form>
+</body> 
+</html>
